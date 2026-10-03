@@ -1,0 +1,54 @@
+---
+slug: oravie
+number: "02"
+name: Oravie
+line: A dental studio whose AI receptionist books visits at any hour.
+summary: A dental studio in Jumeirah whose AI receptionist, Noor, books real appointments at any hour.
+role: Design and build
+year: "2026"
+stack: [Next.js, Vercel AI SDK, Claude, Supabase]
+status: Concept project
+palette:
+  bg: "#FFFFFF"
+  ink: "#0B2545"
+  accent: "#1F5FBF"
+  rule: "#0B2545"
+  muted: "#4F6279"
+media:
+  poster: /work/oravie/poster.jpg
+  loop: /work/oravie/loop.mp4
+  hero1080: /work/oravie/hero-1080.mp4
+  hero720: /work/oravie/hero-720.mp4
+---
+
+<Brief>
+A clinic loses patients who want to book at night or can't get through on the phone. Noor, the receptionist, had to book real appointments at any hour, without ever inventing a free time, a price or a piece of medical advice.
+</Brief>
+
+<Features>
+  <Feature title="Noor, with quick replies" image="/work/oravie/feature-1.jpg" alt="Noor's chat on a phone, offering 'Book a cleaning' and other quick replies, beside the closed clinic's admin">
+    Patients ask in their own words or tap a suggestion. Noor answers from the clinic's own information.
+  </Feature>
+  <Feature title="Booked at 23:47" image="/work/oravie/feature-2.jpg" alt="A confirmed booking on the phone, and the same booking appearing in the clinic admin">
+    Free slots appear as buttons, a name and phone number confirm the visit, and it lands in the clinic's admin while nobody is on shift.
+  </Feature>
+  <Feature title="Prices before treatment" image="/work/oravie/feature-3.jpg" alt="The treatments page with a starting price and duration for each treatment">
+    Every treatment shows a starting price and a duration, so a conversation with Noor starts from facts.
+  </Feature>
+</Features>
+
+<Decisions>
+  <Decision n="01" title="Times come from a tool, not from the model" tradeoff="Less free-flowing than chat, but Noor can never offer a time that isn't free.">
+    Noor can only offer slots she has read from the calendar through a server tool, and they are shown as buttons. She is told never to type a time herself.
+  </Decision>
+  <Decision n="02" title="The server writes the booking" tradeoff="One more round trip before the patient sees 'You're booked'.">
+    Noor collects a name and phone number; a server tool then checks the slot is still free, writes the booking and returns a reference the patient can cancel with.
+  </Decision>
+  <Decision n="03" title="No medical advice" tradeoff="Clinical questions get shorter answers than a patient might want.">
+    Symptoms get the clinic's emergency instructions or the offer of a check-up, never a diagnosis.
+  </Decision>
+</Decisions>
+
+<Engineering stack={["Next.js", "Vercel AI SDK", "Claude", "Supabase"]} flow={["Patient's message", "Noor (Claude)", "Tools: slots, book, cancel", "Supabase", "Clinic admin"]}>
+The brief's six test conversations pass against the real model and database, and the chat is rate-limited per visitor. Slots are real buttons, so booking works by keyboard and with a screen reader. Lighthouse scores are measured on the live build at launch.
+</Engineering>

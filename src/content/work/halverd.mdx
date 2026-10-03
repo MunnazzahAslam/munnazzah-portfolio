@@ -1,0 +1,57 @@
+---
+slug: halverd
+number: "01"
+name: Halverd
+line: Describe the home in your own words; AI turns it into filters.
+summary: AI property search for a private brokerage in Dubai, from one sentence to a signed sale.
+role: Design and build
+year: "2026"
+stack: [Next.js, Claude API, Supabase, Leaflet]
+status: Concept project
+palette:
+  bg: "#F7F5F0"
+  ink: "#1C1D21"
+  accent: "#8C6A33"
+  rule: "#B8955A"
+  muted: "#5E5E5F"
+media:
+  poster: /work/halverd/poster.jpg
+  loop: /work/halverd/loop.mp4
+  hero1080: /work/halverd/hero-1080.mp4
+  hero720: /work/halverd/hero-720.mp4
+---
+
+<Brief>
+Buyers describe the home they want in a sentence, not in dropdowns. Halverd had to turn that sentence into a real search over real listings, without the AI ever being able to invent a home, a price or a permit, and it had to keep working on the day the AI didn't.
+</Brief>
+
+<Features>
+  <Feature title="One-sentence search" image="/work/halverd/feature-1.jpg" alt="The sentence '3-bed villa with a private pool under 6 million' with the five filter chips it became">
+    Claude reads the sentence and returns filters, shown as chips the buyer can edit or remove. Nicknames like "the Palm" and "JVC" are understood.
+  </Feature>
+  <Feature title="Near misses say why" image="/work/halverd/feature-2.jpg" alt="Exact matches above, near misses below, with a map of where they are">
+    Homes that miss one wish sit under the exact matches and name what they miss, like "AED 11.2M, over budget".
+  </Feature>
+  <Feature title="Listings with the permit row" image="/work/halverd/feature-3.jpg" alt="A villa listing with its photo gallery and price">
+    Every listing shows its photos, price, travel times and the advertising-permit row a Dubai advert needs.
+  </Feature>
+  <Feature title="The advisor's side" image="/work/halverd/feature-4.jpg" alt="A lead's pipeline from new request to sold, with the buyer's own sentence beside it">
+    A viewing request carries the buyer's own sentence and its filters. The advisor moves each lead from the first call to Sold.
+  </Feature>
+</Features>
+
+<Decisions>
+  <Decision n="01" title="The model only sets filters" tradeoff="Wishes with no filter, like a garden or a maid's room, can be shown as notes but not searched.">
+    It never sees or writes a listing. It turns one sentence into a short list of filters, and the listings come from the database, so it cannot invent a home.
+  </Decision>
+  <Decision n="02" title="Every value is checked on the server" tradeoff="A new community has to be added to the allowed list before search understands it.">
+    The model's output is checked against the allowed communities, types and views before any query runs. Nicknames are mapped in code, not taken on trust from the model.
+  </Decision>
+  <Decision n="03" title="A fallback that says so" tradeoff="The plain reader understands less, such as 'a good school' or 'ready by next year', so results are broader.">
+    If the AI is unavailable, slow or past its hourly limit, the sentence is matched word by word, and the page tells the buyer the plain reader was used.
+  </Decision>
+</Decisions>
+
+<Engineering stack={["Next.js", "Claude Haiku 4.5", "Structured outputs", "Supabase", "Leaflet"]} flow={["Buyer's sentence", "Claude: filters only", "Server checks", "Supabase listings", "Exact and near matches"]}>
+The model call has a 9-second timeout, identical sentences are cached, and each visitor gets 30 AI searches an hour. The brief's six test searches run as a script against the real model. Every result is in the list, so the map is never the only way to reach a home. Lighthouse scores are measured on the live build at launch.
+</Engineering>

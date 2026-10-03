@@ -1,0 +1,55 @@
+---
+slug: duneline
+number: "04"
+name: Duneline
+line: Car rental in Dubai, from browsing to a booking request.
+summary: A luxury car rental in Dubai where scrolling is the drive, ending in a booking with live prices.
+role: Design and build
+year: "2026"
+stack: [Next.js, GSAP, Lenis, Tailwind]
+status: Front-end prototype
+palette:
+  bg: "#0B0D12"
+  ink: "#F4EFE6"
+  accent: "#C9A86A"
+  rule: "#E08A4F"
+  muted: "#B3B0AB"
+  dark: true
+media:
+  poster: /work/duneline/poster.jpg
+  loop: /work/duneline/loop.mp4
+  hero1080: /work/duneline/hero-1080.mp4
+  hero720: /work/duneline/hero-720.mp4
+---
+
+<Brief>
+Luxury rentals sell a feeling, and a grid of cars doesn't convey one. Duneline had to make browsing feel like the night drive itself, then get out of the way for a booking form with clear, live prices.
+</Brief>
+
+<Features>
+  <Feature title="Scrolling is the drive" image="/work/duneline/feature-1.jpg" alt="The car on a night road, seen from above, beside a card of performance figures">
+    The car starts parked in the hero and drives down a night road as you scroll, stopping beside four cards.
+  </Feature>
+  <Feature title="Three cars" image="/work/duneline/feature-2.jpg" alt="Three fleet cards with car silhouettes and daily prices">
+    The fleet as three cars with daily prices, each leading straight into the booking form.
+  </Feature>
+  <Feature title="Live pricing" image="/work/duneline/feature-3.jpg" alt="The booking form with dates, delivery location, add-ons and a running total">
+    Dates, delivery location and add-ons change the total as they are chosen, with ten percent off a week or more.
+  </Feature>
+</Features>
+
+<Decisions>
+  <Decision n="01" title="One timeline, driven by scroll" tradeoff="It relies on smooth scrolling (Lenis) to keep the car steady on trackpads.">
+    The scroll position sets the car's place on the road through one GSAP timeline, so the drive stays in step whether you scroll fast, slowly or backwards.
+  </Decision>
+  <Decision n="02" title="One car, seen from above" tradeoff="Less spectacle on the first screen.">
+    An earlier version had a side view in the hero and a top view for the drive, and two cars read as two ideas. The car now starts parked in the hero and drives from there.
+  </Decision>
+  <Decision n="03" title="A front end, said plainly" tradeoff="It can't take a real booking: return dates have no upper limit and the reference is a placeholder.">
+    Prices, the seven-day discount and the request are all worked out in the browser, and nothing is saved. The case says so rather than implying a booking system.
+  </Decision>
+</Decisions>
+
+<Engineering stack={["Next.js", "GSAP ScrollTrigger", "Lenis", "Tailwind"]} flow={["Scroll position", "Lenis smoothing", "GSAP timeline", "Car on the road", "Four stops"]}>
+Lighthouse scored 100 on desktop on the development build; the live build is measured at launch.
+</Engineering>

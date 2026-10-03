@@ -1,0 +1,58 @@
+---
+slug: aivik
+number: "05"
+name: AIVIK
+line: A bilingual site for a software studio, with its own AI assistant.
+summary: A bilingual website for a software and AI studio in Germany, with an AI assistant that turns conversations into leads.
+role: Design and build
+year: "2026"
+stack: [Next.js, next-intl, Claude, Postgres]
+status: Live
+live: https://aivik.eu
+palette:
+  bg: "#F7F7F7"
+  ink: "#050B14"
+  accent: "#2563EB"
+  rule: "#050B14"
+  muted: "#475569"
+media:
+  poster: /work/aivik/poster.jpg
+  loop: /work/aivik/loop.mp4
+  hero1080: /work/aivik/hero-1080.mp4
+  hero720: /work/aivik/hero-720.mp4
+---
+
+<Brief>
+A software and AI studio needed a site that explains five services quickly, in English and German, and turns interest into a conversation. Its assistant had to answer like a person at the studio would: briefly, without inventing prices or timelines, and without inventing leads.
+</Brief>
+
+<Features>
+  <Feature title="An animated hero" image="/work/aivik/feature-1.jpg" alt="The hero, 'Build. Scale. Automate.', over a field of moving particles">
+    A live particle field behind three words, with the offer and two ways in right beside it.
+  </Feature>
+  <Feature title="Service cards that open" image="/work/aivik/feature-2.jpg" alt="Five service cards, one opened to show what it covers">
+    Five services as small live artifacts; each card opens on hover to show what it covers.
+  </Feature>
+  <Feature title="A process drawn as you scroll" image="/work/aivik/feature-3.jpg" alt="The process timeline, its line drawing in as the page scrolls">
+    The four steps of an engagement, joined by a line that draws itself as the visitor scrolls.
+  </Feature>
+  <Feature title="Mara, the assistant" image="/work/aivik/feature-4.jpg" alt="Mara's chat open over the hero, with suggested questions">
+    Answers in one or two sentences, in English or German, and passes a qualified lead to the team.
+  </Feature>
+</Features>
+
+<Decisions>
+  <Decision n="01" title="A lead needs an email the visitor typed" tradeoff="A visitor who only leaves a phone number isn't saved as a lead.">
+    The model can call a tool to save a lead, and in testing it once saved "Visitor" with the email "pending". The server now saves a lead only if the visitor typed a valid email in the conversation; otherwise the model is told nothing was saved and asks for it.
+  </Decision>
+  <Decision n="02" title="One pipeline for every inquiry" tradeoff="Chat leads carry less structure than the form, such as no company name.">
+    Leads from the assistant and from the contact form land in the same table, the same spreadsheet and the same email, so the team checks one place.
+  </Decision>
+  <Decision n="03" title="German without moving English" tradeoff="German addresses that differ from the English ones need rewrites.">
+    German was added later. English stays at the root and German lives under /de, so every English link already shared kept working.
+  </Decision>
+</Decisions>
+
+<Engineering stack={["Next.js", "next-intl", "Claude Haiku 4.5", "Postgres (Neon)", "Resend", "Vercel"]} flow={["Visitor's message", "Claude, with a save-lead tool", "Server checks the email", "Postgres, sheet and email", "The team replies"]}>
+The assistant never quotes prices or timelines, declines off-topic requests, and says it is an AI when asked. Lighthouse scores are measured on the live build at launch.
+</Engineering>

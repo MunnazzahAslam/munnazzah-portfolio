@@ -1,0 +1,66 @@
+---
+slug: stielvoll
+number: "03"
+name: Stielvoll
+line: A popsicle shop you can drag, bite and buy.
+summary: An organic popsicle shop in Hamburg with a jelly you can pull and bite, and real checkout.
+role: Design and build
+year: "2026"
+stack: [Next.js, three.js, Stripe, DE / EN]
+status: Concept project
+palette:
+  bg: "#F6A821"
+  ink: "#2A1630"
+  accent: "#2A1630"
+  rule: "#2A1630"
+  muted: "#5F5064"
+  flavours:
+    # In section order. Strawberry comes last: plum on it is only 4.26:1, so it
+    # colours the drain band before "Next project", where there is no text.
+    - { bg: "#F6A821", ink: "#2A1630" }
+    - { bg: "#7CC38F", ink: "#2A1630" }
+    - { bg: "#F2D64B", ink: "#2A1630" }
+    - { bg: "#E36A9A", ink: "#2A1630" }
+    - { bg: "#6A5ACD", ink: "#FFFFFF" }
+    - { bg: "#E8434F", ink: "#2A1630" }
+media:
+  poster: /work/stielvoll/poster.jpg
+  loop: /work/stielvoll/loop.mp4
+  hero1080: /work/stielvoll/hero-1080.mp4
+  hero720: /work/stielvoll/hero-720.mp4
+---
+
+<Brief>
+A small food brand needs a shop that feels like the brand, not a template. Stielvoll had to make the product itself the experience, and still take real orders: pickup or same-day delivery in a two-hour slot, paid online, in German and English.
+</Brief>
+
+<Features>
+  <Feature title="A jelly you can pull" image="/work/stielvoll/feature-1.jpg" alt="A hand dragging an orange popsicle that bends like jelly">
+    A real-time 3D popsicle that bends where you pull it and wobbles back into shape.
+  </Feature>
+  <Feature title="Bites, cut per pixel" image="/work/stielvoll/feature-2.jpg" alt="A pink popsicle with a bite taken out of the top">
+    Tap it and you take a bite. The bite is cut in a custom shader, tooth marks and all.
+  </Feature>
+  <Feature title="A box of six, priced live" image="/work/stielvoll/feature-3.jpg" alt="The box builder with a counter for each flavour and the box price">
+    Mix any six or twelve flavours and see the price and the saving as you go.
+  </Feature>
+  <Feature title="Slots and Stripe Checkout" image="/work/stielvoll/feature-4.jpg" alt="Stripe's payment page on a phone">
+    Pickup or delivery in a two-hour slot, paid through Stripe Checkout in test mode, then an order number and a keep-frozen tip.
+  </Feature>
+</Features>
+
+<Decisions>
+  <Decision n="01" title="Bites in the shader, not the mesh" tradeoff="A bite is a cut in the surface, not new geometry, so there are no crumbs.">
+    The popsicle keeps one simple mesh; each bite is a circle the fragment shader discards against. The jelly simulation never has to rebuild geometry, so it stays cheap enough for a phone.
+  </Decision>
+  <Decision n="02" title="A spring lattice, not a physics engine" tradeoff="Only the popsicle behaves physically; anything more would need the library after all.">
+    The jelly is a small hand-written soft-body simulation, a lattice of springs, so the shop doesn't ship a physics library for one object.
+  </Decision>
+  <Decision n="03" title="Prices only on the server" tradeoff="Checkout waits for one server round trip before Stripe opens.">
+    The browser only says what's in the cart. The server prices it from the shop's own data, checks the slot still has room, and creates the Stripe session.
+  </Decision>
+</Decisions>
+
+<Engineering stack={["Next.js", "React Three Fiber", "Stripe", "Supabase", "next-intl"]} flow={["Cart in the browser", "Server prices it", "Stripe Checkout", "Webhook marks it paid", "Orders admin"]}>
+Each slot takes six orders and is recounted after every order, so two buyers can't overfill it. Visitors who prefer reduced motion see a still popsicle instead of the jelly. Lighthouse scores are measured on the live build at launch.
+</Engineering>
