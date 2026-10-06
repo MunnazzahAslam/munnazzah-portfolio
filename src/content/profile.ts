@@ -6,7 +6,7 @@
 export const profile = {
   name: "Munnazzah Aslam",
   role: "Senior frontend engineer",
-  positioning: "I build fast, accessible React products, with AI that can't make things up.",
+  positioning: "I design and build fast, accessible products, and bring AI into them in ways that actually work.",
   subline: "Senior frontend engineer with five years in production. I design what I build, too.",
   status: ["UAE", "Open to frontend roles"],
   // Logos are one-colour versions in the site's ink, in public/previously. Each
