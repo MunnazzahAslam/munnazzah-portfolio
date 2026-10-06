@@ -299,6 +299,12 @@ video {
     margin-top: var(--s-48);
   }
 }
+/* A quiet supporting line under the title. */
+.hero-sub {
+  margin-top: var(--s-16);
+  max-width: 40ch;
+  color: var(--c-muted);
+}
 .hero-meta {
   margin-top: var(--s-32);
   display: flex;
@@ -308,8 +314,26 @@ video {
 .previously {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s-8) var(--s-24);
+  align-items: center;
+  gap: var(--s-16) var(--s-24);
   padding-block: var(--s-24);
+}
+.previously-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-16) var(--s-32);
+}
+.previously-logos li {
+  display: flex;
+}
+.previously-logos img {
+  display: block;
+}
+@media (min-width: 1024px) {
+  .previously-logos {
+    gap: var(--s-16) var(--s-48);
+  }
 }
 
 /* ---------- Home: the work index ---------- */

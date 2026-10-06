@@ -1,4 +1,5 @@
 import { ViewTransition } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WorkIndex from "@/components/WorkIndex";
@@ -35,11 +36,23 @@ export default function Home() {
           </ul>
         </section>
 
-        {/* Names only: logos would bring in colour. */}
+        {/* Logos in ink only: their own colours would break the page's rule. */}
         <section className="wrap" aria-label="Previously at">
           <div className="rule previously label">
             <span className="muted">Previously</span>
-            <span>{profile.previously.join(", ")}</span>
+            <ul className="previously-logos">
+              {profile.previously.map((c) => (
+                <li key={c.name}>
+                  <Image
+                    src={c.logo}
+                    alt={c.name}
+                    width={Math.round((c.width / c.height) * c.show)}
+                    height={c.show}
+                    unoptimized
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

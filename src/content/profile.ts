@@ -6,21 +6,28 @@
 export const profile = {
   name: "Munnazzah Aslam",
   role: "Senior frontend engineer",
-  positioning: "Senior frontend engineer. I build fast, accessible products with AI inside, and I design them too.",
-  status: ["UAE", "Open to senior frontend roles", "EN / DE"],
-  previously: ["NymCard", "10Pearls", "SpurSol", "TransformX"],
+  positioning: "I build fast, accessible React products, with AI that can't make things up.",
+  subline: "Senior frontend engineer with five years in production. I design what I build, too.",
+  status: ["UAE", "Open to frontend roles"],
+  // Logos are one-colour versions in the site's ink, in public/previously. Each
+  // has its own height so wordmarks and marks-with-wordmarks look the same size.
+  previously: [
+    { name: "NymCard", logo: "/previously/nymcard.svg", width: 852, height: 108, show: 15 },
+    { name: "10Pearls", logo: "/previously/10pearls.svg", width: 150, height: 47, show: 26 },
+    { name: "SpurSol", logo: "/previously/spursol.png", width: 508, height: 120, show: 24 },
+    { name: "TransformX", logo: "/previously/transformx.png", width: 856, height: 120, show: 20 },
+  ],
   email: "aslammunnazzah@gmail.com",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/munnazzahaslam" },
     { label: "GitHub", href: "https://github.com/MunnazzahAslam" },
-    { label: "Fiverr", href: "https://www.fiverr.com/s/1Eq5D8k" },
   ],
   location: "Sharjah, UAE",
 
   intro: [
     "I'm a frontend engineer with five years in production: fintech at NymCard, enterprise products at 10Pearls, and early-stage builds before that. React, Angular and TypeScript are home, and I'm comfortable a long way down the stack.",
     "AI is part of how I work every day. I brought Claude Code into a production team at NymCard, and I build AI features where the model has one narrow job and the server checks what it returns.",
-    "I'm looking for a senior frontend role in the UAE or Europe, on a team that cares how things look, how fast they load and who can use them.",
+    "I'm looking for a senior frontend role in the UAE, on a team that cares how things look, how fast they load and who can use them.",
   ],
 
   strengths: [

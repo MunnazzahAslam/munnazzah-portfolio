@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", "monospace"],
 });
 
-const description = "Senior frontend engineer in the UAE. Fast, accessible products with AI inside, designed and built by the same person.";
+const description = "Senior frontend engineer in the UAE. Fast, accessible React products with AI that can't make things up, designed and built by the same person.";
 
 export const metadata: Metadata = {
   title: { default: `${profile.name} · ${profile.role}`, template: `%s · ${profile.name}` },
