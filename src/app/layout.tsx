@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { profile } from "@/content/profile";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Geist carries everything; Geist Mono handles the small labels. Both are
@@ -30,7 +31,10 @@ export const viewport: Viewport = { themeColor: "#ffffff" };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
