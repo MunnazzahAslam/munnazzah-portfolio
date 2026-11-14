@@ -20,6 +20,15 @@ const geistMono = Geist_Mono({
 
 const description = "Senior frontend engineer in the UAE. Fast, accessible React products with AI that can't make things up, designed and built by the same person.";
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  description: profile.positioning,
+  sameAs: profile.links.map((link) => link.href),
+};
+
 export const metadata: Metadata = {
   title: { default: `${profile.name} · ${profile.role}`, template: `%s · ${profile.name}` },
   description,
@@ -32,6 +41,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         {children}
         <Analytics />
       </body>

@@ -16,7 +16,7 @@ Built so far, of the five passes in the brief:
    case, and the next-project handoff.
 
 Still to come: final copy for the case studies (4: the Oravie, Stielvoll and Duneline decisions
-are drafts) and the launch pass with share images, structured data and analytics (5).
+are drafts) and share images for the launch pass (5). Person structured data and analytics are already in place.
 
 ## The colour rule
 
