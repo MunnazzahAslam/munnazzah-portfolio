@@ -4,7 +4,7 @@ import { profile } from "@/content/profile";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-// Geist carries everything; Geist Mono handles the smaml labels. Both are
+// Geist carries everything; Geist Mono handles the small labels. Both are
 // downloaded at build time and served from this site, as variable woff2.
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 // The label font falls back to a real monospace font, whose characters are
